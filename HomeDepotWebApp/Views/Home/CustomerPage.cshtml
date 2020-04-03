@@ -1,0 +1,41 @@
+﻿@model HomeDepotWebApp.Models.CustomerPageViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Page</title>
+</head>
+<body>
+    <div>
+        <h2>@Model.Customer.Name</h2>
+        <hr />
+        <h4>Bookings</h4>
+        <ul>
+            @foreach (var booking in Model.Bookings)
+            {
+                <li>
+                    Booking Id: @booking.BookingId
+                    <br />
+                    Pickup day: @booking.PickupDay.ToString("dd-MM-yyyy")
+                    <br />
+                    Tool: @Model.Tools.Find(t => t.ToolId == booking.ToolId).Name
+                    <br />
+                    Status: @booking.Status
+                    <hr width="25%" align="left"/>
+                </li>
+            }
+        </ul>
+        
+    </div>
+    <p>
+        @Html.ActionLink("Create Booking", "CreateBooking");
+        @Html.ActionLink("Logout", "Logout")
+    </p>
+</body>
+</html>

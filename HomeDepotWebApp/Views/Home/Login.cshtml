@@ -1,0 +1,34 @@
+﻿@model HomeDepotWebApp.Models.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <label>Email: </label>
+            @Html.EditorFor(model => model.Email)*
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div>
+            <label>Password: </label>
+            @Html.EditorFor(model => model.Password)*
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <input type="submit" value="Login" />
+        
+        <p>@ViewBag.Error</p>
+    }
+</body>
+</html>
+
